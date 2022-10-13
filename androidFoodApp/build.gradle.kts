@@ -1,23 +1,28 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    id(Plugins.androidApplication)
+    kotlin(KotlinPlugins.android)
+    kotlin(KotlinPlugins.kapt)
+    kotlin(KotlinPlugins.serialization) version Kotlin.version
 }
 
 android {
-    namespace = "uticodes.tutorials.kmmfoodappdemo.android"
-    compileSdk = 32
+    namespace = Application.namespace
+    compileSdk = Application.compileSdk
     defaultConfig {
-        applicationId = "uticodes.tutorials.kmmfoodappdemo.android"
-        minSdk = 21
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Application.appId
+        minSdk = Application.minSdk
+        targetSdk = Application.targetSdk
+        versionCode = Application.versionCode
+        versionName = Application.versionName
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.0"
+        kotlinCompilerExtensionVersion = Compose.kotlinCompilerExtensionVersion
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
     packagingOptions {
         resources {
@@ -33,10 +38,24 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation("androidx.compose.ui:ui:1.2.1")
-    implementation("androidx.compose.ui:ui-tooling:1.2.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.2.1")
-    implementation("androidx.compose.foundation:foundation:1.2.1")
-    implementation("androidx.compose.material:material:1.2.1")
-    implementation("androidx.activity:activity-compose:1.5.1")
+
+    implementation(AndroidX.appCompat)
+
+    implementation(Compose.runtime)
+    implementation(Compose.runtimeLiveData)
+    implementation(Compose.ui)
+    implementation(Compose.material)
+    implementation(Compose.uiTooling)
+    implementation(Compose.preview)
+    implementation(Compose.foundation)
+    implementation(Compose.compiler)
+    implementation(Compose.constraintLayout)
+    implementation(Compose.activity)
+    implementation(Compose.navigation)
+
+    implementation(Google.material)
+
+    implementation(Kotlinx.datetime)
+
+    debugImplementation(SquareUp.leakCanary)
 }
