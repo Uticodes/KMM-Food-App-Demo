@@ -16,11 +16,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dagger.hilt.android.AndroidEntryPoint
 import uticodes.tutorials.kmmfoodappdemo.Greeting
 import uticodes.tutorials.kmmfoodappdemo.android.presentation.navigation.Navigation
 import uticodes.tutorials.kmmfoodappdemo.android.theme.MyApplicationTheme
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
